@@ -1,7 +1,10 @@
-import { Table, Tabs, Tab, Breadcrumb, Navbar, Nav, NavDropdown, Form, Button, Container, Spinner } from "react-bootstrap";
+import { Collapse, Table, Tabs, Tab, Breadcrumb, Navbar, Nav, NavDropdown, Form, Button, Container, Spinner, ProgressBar, ButtonGroup, OverlayTrigger, Popover } from "react-bootstrap";
 import { useState } from "react";
 
 function App() {
+  const [open, setOpen] = useState(false);
+  const munculPopover = <Popover title="">Website ini dibuat untuk memudahkan dalam pencarian informasi terkini tentang berita olahraga</Popover>;
+
   const [activeTab, setActiveTab] = useState("home");
 
   const handleTabChange = (tab) => {
@@ -55,7 +58,7 @@ function App() {
           <Tabs ActiveKey={activeTab} onSelect={handleTabChange}>
             <Tab eventKey="home" title="Semua Transfer">
               <div className="tbale-container">
-                <Table striped bordered hover>
+                <Table bordered hover>
                   <thead>
                     <tr>
                       <th>#</th>
@@ -68,17 +71,58 @@ function App() {
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Marouane Fellaini</td>
-                      <td>Manchester United</td>
-                      <td>Shandong Luneng</td>
-                      <td>D</td>
+                      <td>MAROUANE FELLAINI</td>
+                      <td>MANCHESTER UNITED</td>
+                      <td>SHANDONG LUNENG</td>
+                      <td>
+                        <ProgressBar now={85} label="85%" />
+                      </td>
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>John Doe</td>
-                      <td>Team A</td>
-                      <td>Team B</td>
-                      <td>P</td>
+                      <td>LUIS NANI</td>
+                      <td>SPORTING CP</td>
+                      <td>ORLANDO</td>
+                      <td>
+                        {" "}
+                        <ProgressBar now={55} label="55%" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>MAREK HAMSIK</td>
+                      <td>NAPOLI</td>
+                      <td>DALIAN YIFANG</td>
+                      <td>
+                        <ProgressBar now={95} label="95%" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>SARDAR AZMOUN</td>
+                      <td>RUBIN KAZAN</td>
+                      <td>ZENIT ST PETERSBURG</td>
+                      <td>
+                        <ProgressBar now={100} label="100%" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>MICHY BATSHUAYI</td>
+                      <td>CHELSEA</td>
+                      <td>CRYSTAL PALACE</td>
+                      <td>
+                        <ProgressBar now={50} label="50%" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>LUCAS PIAZON</td>
+                      <td>CHELSEA</td>
+                      <td>CHEVO</td>
+                      <td>
+                        <ProgressBar now={100} label="100%" />
+                      </td>
                     </tr>
                     {/* Tambahkan baris tabel lainnya sesuai kebutuhan */}
                   </tbody>
@@ -92,6 +136,36 @@ function App() {
             <Tab eventKey="liga1" title="Liga 1 Indonesia"></Tab>
             <Tab eventKey="proses" title="Proses Transfer"></Tab>
           </Tabs>
+
+          <ButtonGroup>
+            <Button variant="outline-primary"></Button>
+            <Button variant="outline-primary"></Button>
+            <Button variant="outline-primary">1</Button>
+            <Button variant="outline-primary">...</Button>
+            <Button variant="outline-primary">10</Button>
+            <Button variant="outline-primary">11</Button>
+            <Button variant="outline-primary">12</Button>
+            <Button variant="outline-primary">13</Button>
+            <Button variant="outline-primary">14</Button>
+            <Button variant="outline-primary">...</Button>
+            <Button variant="outline-primary">20</Button>
+            <Button variant="outline-primary"></Button>
+            <Button variant="outline-primary"></Button>
+          </ButtonGroup>
+          <br />
+          <br />
+          <div style={{ display: "inline-block" }}>
+            <OverlayTrigger trigger="click" placement="right" overlay={munculPopover}>
+              <Button variant="success">Informasi</Button>
+            </OverlayTrigger>
+
+            <Button onClick={() => setOpen(!open)} aria-controls="example-collapse-text" aria-expanded={open} style={{ marginLeft: "10px" }}>
+              Versi Website
+            </Button>
+            <Collapse in={open}>
+              <div id="example-collapse-text">Akses Sport V1.0</div>
+            </Collapse>
+          </div>
         </div>
       </div>
     </div>
